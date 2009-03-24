@@ -148,24 +148,29 @@ Public Class Clase
 
 
     Public Function nombre() As String
+        Return Me.NombreTabla
         Dim temp As String = Me.llave
+        If temp.Length < 3 Then
 
-        If temp.Substring(temp.Length - 3, 3).Equals("_id") Then
-            temp = Me.llave.Substring(0, temp.Length - 3)
-
+            Return Me.NombreTabla
         Else
-            If CType(temp(temp.Length - 1), Char) = "s" And Not (temp(temp.Length - 2) = "u" Or temp(temp.Length - 2) = "i") Then
-                temp = temp.Substring(0, temp.Length - 1)
-            End If
+            If temp.Substring(temp.Length - 3, 3).Equals("_id") Then
+                temp = Me.llave.Substring(0, temp.Length - 3)
 
-            If temp(temp.Length - 1) = "e" And Not (temp(temp.Length - 2) = "t" Or temp(temp.Length - 2) = "h") Then
-                temp = temp.Substring(0, temp.Length - 1)
+            Else
+                If CType(temp(temp.Length - 1), Char) = "s" And Not (temp(temp.Length - 2) = "u" Or temp(temp.Length - 2) = "i") Then
+                    temp = temp.Substring(0, temp.Length - 1)
+                End If
+
+                If temp(temp.Length - 1) = "e" And Not (temp(temp.Length - 2) = "t" Or temp(temp.Length - 2) = "h") Then
+                    temp = temp.Substring(0, temp.Length - 1)
+                End If
+                If temp(temp.Length - 1) = "C" Then
+                    temp = temp.Substring(0, temp.Length - 1) & "z"
+                End If
             End If
-            If temp(temp.Length - 1) = "C" Then
-                temp = temp.Substring(0, temp.Length - 1) & "z"
-            End If
+            Return temp
         End If
-        Return temp
     End Function
 
     Public Sub New()

@@ -5,7 +5,8 @@ Public Class GeneraClase
     
     Public Function GeneraClase() As String
         Dim str As String
-        str = "Imports system.data.sqlClient" & vbCrLf
+		str = "Microsoft.VisualBasic" & vbCrLf
+        str &= "Imports system.data.sqlClient" & vbCrLf
         str &= "Namespace " & neimespeis & vbCrLf
         str &= "Public Class " & clase.nombre & vbCrLf
         If clase.Campos.Count > 0 Then
@@ -90,7 +91,7 @@ Public Class GeneraClase
 
 
         str &= "Dim sqlString = """ & query & """" & vbCrLf
-        str &= "sqlCommand.Parameters.Add(""@" & clase.llave & """, SqlDbType.Int)" & vbCrLf
+        str &= "sqlCommand.Parameters.Add(""@" & clase.llave & """, Data.SqlDbType.Int)" & vbCrLf
         str &= "sqlCommand.Parameters(""@" & clase.llave & """).Value = Me." & clase.llave & vbCrLf
         str &= "sqlCommand.CommandText = sqlString" & vbCrLf
 
@@ -127,12 +128,19 @@ Public Class GeneraClase
         Next
         query = ""
         query &= campos & " FROM " & clase.NombreTabla
-        query &= " WHERE " & clase.llave & "=@" & clase.llave
+        
 
 
         str &= "Dim sqlString = """ & query & """" & vbCrLf
-        str &= "sqlCommand.Parameters.Add(""@" & clase.llave & """, SqlDbType.Int)" & vbCrLf
+		str & = "SELECT tipo "& vbCrLf
+		str & = "case 0  'Todos" & vbCrLf
+		str & = "case 1 'Por id" & vbCrLf
+		str & "sqlString &= "" WHERE " & clase.llave & "=@" & clase.llave & """" & vbCrLf
+		str &= "sqlCommand.Parameters.Add(""@" & clase.llave & """, Data.SqlDbType.Int)" & vbCrLf
         str &= "sqlCommand.Parameters(""@" & clase.llave & """).Value = Me." & clase.llave & vbCrLf
+		str & = "END SELECT  "& vbCrLf
+		
+		
         str &= "sqlCommand.CommandText = sqlString" & vbCrLf
 
         str &= "conn.Open()" & vbCrLf
@@ -183,7 +191,7 @@ Public Class GeneraClase
         str &= "conn.Open()" & vbCrLf
 
         For i = 0 To clase.Campos.Count - 1
-            str &= "sqlCommand.Parameters.Add(""@" & clase.Campos(i).Nombre & """, SqlDbType." & clase.Campos(i).Tipo & ")" & vbCrLf
+            str &= "sqlCommand.Parameters.Add(""@" & clase.Campos(i).Nombre & """, Data.SqlDbType." & clase.Campos(i).Tipo & ")" & vbCrLf
         Next
 
         For i = 0 To clase.Campos.Count - 1
@@ -233,7 +241,7 @@ Public Class GeneraClase
         str &= "conn.Open()" & vbCrLf
 
         For i = 0 To clase.Campos.Count - 1
-            str &= "sqlCommand.Parameters.Add(""@" & clase.Campos(i).Nombre & """, SqlDbType." & clase.Campos(i).Tipo & ")" & vbCrLf
+            str &= "sqlCommand.Parameters.Add(""@" & clase.Campos(i).Nombre & """, Data.SqlDbType." & clase.Campos(i).Tipo & ")" & vbCrLf
         Next
 
         For i = 0 To clase.Campos.Count - 1
@@ -266,7 +274,7 @@ Public Class GeneraClase
 
 
         str &= "Dim sqlString = """ & query & """" & vbCrLf
-        str &= "sqlCommand.Parameters.Add(""@" & clase.llave & """, SqlDbType.Int)" & vbCrLf
+        str &= "sqlCommand.Parameters.Add(""@" & clase.llave & """, Data.SqlDbType.Int)" & vbCrLf
         str &= "sqlCommand.Parameters(""@" & clase.llave & """).Value = Me." & clase.llave & vbCrLf
         str &= "sqlCommand.CommandText = sqlString" & vbCrLf
 
