@@ -89,31 +89,41 @@ Public Class frmgeneraOpciones
                     clastemp.Campos.Add(mnjClsTemp.Clase.Campos(indexChecked))
                 Next
 
-                Dim genera As New GeneraClase
-                Dim gnrMnj As New generaManejador
-                Dim gnrDsn As New generaDiseno
-                Dim gnrFrm As New generaForma
 
-                'Diseño
-                gnrDsn.neimespeis = spacename
-                gnrDsn.clace = clastemp
-                'Forma
-                gnrFrm.neimespeis = spacename
-                gnrFrm.clace = clastemp
-                ''Manejador
-                gnrMnj.neimespeis = spacename
-                gnrMnj.clace = clastemp
-                ''Clase
 
-                genera.clase = clastemp
-                genera.neimespeis = spacename
 
-                sclases &= genera.GeneraClase()
                 If Me.rdbVarios.Checked Then
-                    Me.SaveTextToFile(gnrFrm.generaForma, directorio, "Frm" & clastemp.NombreTabla, "Jodeos")
-                    Me.SaveTextToFile(gnrDsn.generaDiseno, directorio, "Frm" & clastemp.NombreTabla & ".designer", "Jodeos")
-                    Me.SaveTextToFile(gnrMnj.generaManeja, directorio, "maneja" & clastemp.NombreTabla, "Jodeos")
-                    Me.SaveTextToFile(genera.GeneraClase(), directorio, clastemp.nombre, "Jodeos")
+                    If Me.chkInterfaz.Checked Then
+                        Dim gnrDsn As New generaDiseno
+                        Dim gnrFrm As New generaForma
+                        'Diseño
+                        gnrDsn.neimespeis = spacename
+                        gnrDsn.clace = clastemp
+                        'Forma
+                        gnrFrm.neimespeis = spacename
+                        gnrFrm.clace = clastemp
+                        Me.SaveTextToFile(gnrFrm.generaForma, directorio, "Frm" & clastemp.NombreTabla, "Jodeos")
+                        Me.SaveTextToFile(gnrDsn.generaDiseno, directorio, "Frm" & clastemp.NombreTabla & ".designer", "Jodeos")
+                    End If
+
+                    If Me.chkManejador.Checked Then
+                        Dim gnrMnj As New generaManejador
+                        ''Manejador
+                        gnrMnj.neimespeis = spacename
+                        gnrMnj.clace = clastemp
+                        ''Clase
+                        Me.SaveTextToFile(gnrMnj.generaManeja, directorio, "maneja" & clastemp.NombreTabla, "Jodeos")
+                    End If
+
+
+                    If Me.chkClases.Checked Then
+                        Dim genera As New GeneraClase
+                        genera.clase = clastemp
+                        genera.neimespeis = spacename
+                        sclases &= genera.GeneraClase()
+                        Me.SaveTextToFile(genera.GeneraClase(), directorio, clastemp.nombre, "Jodeos")
+                    End If
+
                 End If
 
             End If
