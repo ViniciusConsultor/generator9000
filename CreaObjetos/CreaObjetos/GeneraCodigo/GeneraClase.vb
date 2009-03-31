@@ -5,7 +5,7 @@ Public Class GeneraClase
     
     Public Function GeneraClase() As String
         Dim str As String
-		str = "Microsoft.VisualBasic" & vbCrLf
+        str = "Imports Microsoft.VisualBasic" & vbCrLf
         str &= "Imports system.data.sqlClient" & vbCrLf
         str &= "Namespace " & neimespeis & vbCrLf
         str &= "Public Class " & clase.nombre & vbCrLf
@@ -113,8 +113,8 @@ Public Class GeneraClase
         Dim query As String
         Dim campos As String
         str = ""
-        str &= "Public Function Busca" & Me.clase.NombreTabla & "(byval tipo as integer, byval busq as string) as List(of " & Me.clase.nombre & ")" & vbCrLf
-        str &= "Dim " & Me.clase.NombreTabla & " As new List(of " & Me.clase.nombre & ")" & vbCrLf
+        str &= "Public Function Busca" & Me.clase.NombreTabla & "(byval tipo as integer, byval busq as string) as System.Collections.Generic.List(of " & Me.clase.nombre & ")" & vbCrLf
+        str &= "Dim " & Me.clase.NombreTabla & " As new System.Collections.Generic.List(of " & Me.clase.nombre & ")" & vbCrLf
         str &= "Dim mcn As New MiConexion()" & vbCrLf
         str &= "Dim conn As SqlConnection = mcn.sqlConnection" & vbCrLf
         str &= "Dim sqlRead As SqlDataReader" & vbCrLf
@@ -135,7 +135,7 @@ Public Class GeneraClase
 		str & = "SELECT tipo "& vbCrLf
 		str & = "case 0  'Todos" & vbCrLf
 		str & = "case 1 'Por id" & vbCrLf
-		str & "sqlString &= "" WHERE " & clase.llave & "=@" & clase.llave & """" & vbCrLf
+        str &= "sqlString &= "" WHERE " & clase.llave & "=@" & clase.llave & """" & vbCrLf
 		str &= "sqlCommand.Parameters.Add(""@" & clase.llave & """, Data.SqlDbType.Int)" & vbCrLf
         str &= "sqlCommand.Parameters(""@" & clase.llave & """).Value = Me." & clase.llave & vbCrLf
 		str & = "END SELECT  "& vbCrLf

@@ -387,7 +387,7 @@ Public Class FrmPrincipal
             Dim cls As New Clase
             cls.NombreTabla = sdr.Item("Table_name")
             If Not Me.baseDatos Is Nothing Then
-                cls.sqlCon = New SqlConnection(Me.sqlCon.ConnectionString & "Pwd=sisacadcsc;Initial Catalog=" & Me.baseDatos)
+                cls.sqlCon = New SqlConnection(Me.sqlCon.ConnectionString & "Pwd=marquez;Initial Catalog=" & Me.baseDatos)
             Else
                 cls.sqlCon = Me.sqlCon
             End If
