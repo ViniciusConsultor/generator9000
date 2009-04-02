@@ -87,11 +87,8 @@
     <Compile Include="Formas\frmgeneraOpciones.vb">
       <SubType>Form</SubType>
     </Compile>
-<<<<<<< .mine
     <Compile Include="GeneraCodigo\generaAspMr.vb" />
-=======
     <Compile Include="GeneraCodigo\generaAspMngr.vb" />
->>>>>>> .r5
     <Compile Include="GeneraCodigo\GeneraClase.vb" />
     <Compile Include="Formas\ManejaClase.vb">
       <SubType>UserControl</SubType>
