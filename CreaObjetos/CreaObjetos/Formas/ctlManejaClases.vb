@@ -12,9 +12,9 @@ Public Class ctlManejaClases
         Me.nombresTabla.Add(clace.NombreTabla)
 
 
-        x = (n Mod 5) * 120
+        x = (n Mod 5) * 125
 
-        y = Math.Floor(n / 5) * 120
+        y = Math.Floor(n / 5) * 130
 
 
         clb.Location = New System.Drawing.Point(x, y)

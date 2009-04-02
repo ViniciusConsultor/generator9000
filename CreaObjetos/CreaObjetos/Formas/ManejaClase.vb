@@ -63,6 +63,7 @@ Public Class ManejaClase
         Me.chbIncluir.Name = "chbIncluir"
         Me.chbIncluir.Size = New System.Drawing.Size(15, 14)
         Me.chbIncluir.TabIndex = 3
+        Me.chbIncluir.Checked = True
         Me.chbIncluir.UseVisualStyleBackColor = True
         '
         'ManejaClase
@@ -126,7 +127,7 @@ Public Class ManejaClase
         Me.clbCampos.EndUpdate()
 
         Me.lblClase.Text = Me.Clase.NombreTabla
-        Me.chbIncluir.Checked = False
+        Me.chbIncluir.Checked = True
         Me.chbTodos.Checked = True
         Me.Width = Me.clbCampos.Width
         Me.Height = Me.clbCampos.Height + 34

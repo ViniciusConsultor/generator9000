@@ -55,7 +55,6 @@ Public Class frmCargaBase
         Me.txtServer.Name = "txtServer"
         Me.txtServer.Size = New System.Drawing.Size(164, 20)
         Me.txtServer.TabIndex = 30
-        Me.txtServer.Text = "TWILIGHTZ\SQLEXPRESS"
         '
         'btnCreaClase
         '
@@ -98,7 +97,6 @@ Public Class frmCargaBase
         Me.txtContrasena.Name = "txtContrasena"
         Me.txtContrasena.Size = New System.Drawing.Size(100, 20)
         Me.txtContrasena.TabIndex = 32
-        Me.txtContrasena.Text = "seguro"
         '
         'lblUsuario
         '
