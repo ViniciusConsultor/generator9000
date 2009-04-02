@@ -55,10 +55,6 @@ Public Class FrmPrincipal
     Friend WithEvents ArchivoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CrearCodigoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents GenerarToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents CtlManejaClases1 As WindowsApplication1.ctlManejaClases
-    Friend WithEvents CtlManejaClases2 As WindowsApplication1.ctlManejaClases
-    Friend WithEvents CtlManejaClases3 As WindowsApplication1.ctlManejaClases
-    Friend WithEvents CtlManejaClases4 As WindowsApplication1.ctlManejaClases
     Friend WithEvents cmcClases As WindowsApplication1.ctlManejaClases
     Friend WithEvents NuevoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
@@ -387,7 +383,11 @@ Public Class FrmPrincipal
             Dim cls As New Clase
             cls.NombreTabla = sdr.Item("Table_name")
             If Not Me.baseDatos Is Nothing Then
+<<<<<<< .mine
+                cls.sqlCon = New SqlConnection(Me.sqlCon.ConnectionString & "Pwd=Asteroide23;Initial Catalog=" & Me.baseDatos)
+=======
                 cls.sqlCon = New SqlConnection(Me.sqlCon.ConnectionString & "Pwd=marquez;Initial Catalog=" & Me.baseDatos)
+>>>>>>> .r5
             Else
                 cls.sqlCon = Me.sqlCon
             End If
@@ -461,4 +461,8 @@ Public Class FrmPrincipal
 
 
 
+    Private Sub FrmPrincipal_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
+        Me.cmcClases.Width = Me.Width * 0.8
+        Me.cmcClases.Height = Me.Height * 0.8
+    End Sub
 End Class
