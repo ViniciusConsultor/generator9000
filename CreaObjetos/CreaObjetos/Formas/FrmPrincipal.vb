@@ -143,7 +143,7 @@ Public Class FrmPrincipal
         Me.tbcClase.Controls.Add(Me.tbpOpcion)
         Me.tbcClase.Controls.Add(Me.tbpMetodos)
         Me.tbcClase.Controls.Add(Me.tbClases)
-        Me.tbcClase.Location = New System.Drawing.Point(412, 556)
+        Me.tbcClase.Location = New System.Drawing.Point(209, 556)
         Me.tbcClase.Name = "tbcClase"
         Me.tbcClase.SelectedIndex = 0
         Me.tbcClase.Size = New System.Drawing.Size(498, 175)
@@ -461,5 +461,6 @@ Public Class FrmPrincipal
     Private Sub FrmPrincipal_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
         Me.cmcClases.Width = Me.Width * 0.8
         Me.cmcClases.Height = Me.Height * 0.8
+        Me.tbcClase.Location = New Point(Me.tbcClase.Location.X, Me.cmcClases.Location.Y + Me.cmcClases.Height + 10)
     End Sub
 End Class

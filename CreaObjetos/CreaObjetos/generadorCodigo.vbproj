@@ -87,6 +87,7 @@
     <Compile Include="Formas\frmgeneraOpciones.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GeneraCodigo\GeneraClaseASP.vb" />
     <Compile Include="GeneraCodigo\generaAspMr.vb" />
     <Compile Include="GeneraCodigo\generaAspMngr.vb" />
     <Compile Include="GeneraCodigo\GeneraClase.vb" />
@@ -96,6 +97,7 @@
     <Compile Include="GeneraCodigo\generaForma.vb" />
     <Compile Include="GeneraCodigo\generaDiseno.vb" />
     <Compile Include="GeneraCodigo\generaManejador.vb" />
+    <Compile Include="GeneraCodigo\generaPagina.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
