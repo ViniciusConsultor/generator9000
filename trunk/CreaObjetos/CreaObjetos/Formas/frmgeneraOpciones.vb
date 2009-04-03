@@ -93,35 +93,10 @@ Public Class frmgeneraOpciones
 
 
                 If Me.rdbVarios.Checked Then
-                    If Me.chkInterfaz.Checked Then
-                        Dim gnrDsn As New generaDiseno
-                        Dim gnrFrm As New generaForma
-                        'Diseño
-                        gnrDsn.neimespeis = spacename
-                        gnrDsn.clace = clastemp
-                        'Forma
-                        gnrFrm.neimespeis = spacename
-                        gnrFrm.clace = clastemp
-                        Me.SaveTextToFile(gnrFrm.generaForma, directorio, "Frm" & clastemp.NombreTabla, "Jodeos")
-                        Me.SaveTextToFile(gnrDsn.generaDiseno, directorio, "Frm" & clastemp.NombreTabla & ".designer", "Jodeos")
-                    End If
-
-                    If Me.chkManejador.Checked Then
-                        Dim gnrMnj As New generaManejador
-                        ''Manejador
-                        gnrMnj.neimespeis = spacename
-                        gnrMnj.clace = clastemp
-                        ''Clase
-                        Me.SaveTextToFile(gnrMnj.generaManeja, directorio, "maneja" & clastemp.NombreTabla, "Jodeos")
-                    End If
-
-
-                    If Me.chkClases.Checked Then
-                        Dim genera As New GeneraClase
-                        genera.clase = clastemp
-                        genera.neimespeis = spacename
-                        sclases &= genera.GeneraClase()
-                        Me.SaveTextToFile(genera.GeneraClase(), directorio, clastemp.nombre, "Jodeos")
+                    If Me.rdbWapl.Checked Then
+                        sclases &= Me.VariosArchivosAppl(spacename, clastemp)
+                    ElseIf Me.rdbASP.Checked Then
+                        sclases &= Me.VariosArchivosASP(spacename, clastemp)
                     End If
 
                 End If
@@ -130,6 +105,70 @@ Public Class frmgeneraOpciones
 
         Next
 
+        Return sclases
+    End Function
+    Public Function VariosArchivosASP(ByVal spacename As String, ByVal clastemp As Clase) As String
+        Dim sclases As String = String.Empty
+        If Me.chkClasesASP.Checked Then
+            Dim gnrDsn As New generaPagina
+            'Diseño
+            gnrDsn.neimespeis = spacename
+            gnrDsn.clace = clastemp
+            'Forma
+            Me.SaveTextToFile(gnrDsn.generaPagina, directorio, clastemp.NombreTabla & "View.aspx", "Jodeos")
+        End If
+
+        If Me.chkManejador.Checked Then
+            Dim gnrMnj As New generaManejador
+            ''Manejador
+            gnrMnj.neimespeis = spacename
+            gnrMnj.clace = clastemp
+            ''Clase
+            Me.SaveTextToFile(gnrMnj.generaManeja, directorio, clastemp.NombreTabla & "Action.aspx.vb", "Jodeos")
+        End If
+
+
+        If Me.chkClases.Checked Then
+            Dim genera As New GeneraClaseASP
+            genera.clase = clastemp
+            genera.neimespeis = spacename
+            sclases &= genera.GeneraClase()
+            Me.SaveTextToFile(genera.GeneraClase(), directorio, clastemp.nombre, "Jodeos")
+        End If
+        Return sclases
+    End Function
+    Public Function VariosArchivosAppl(ByVal spacename As String, ByVal clastemp As Clase) As String
+        Dim sclases As String = String.Empty
+        If Me.chkInterfaz.Checked Then
+            Dim gnrDsn As New generaDiseno
+            Dim gnrFrm As New generaForma
+            'Diseño
+            gnrDsn.neimespeis = spacename
+            gnrDsn.clace = clastemp
+            'Forma
+            gnrFrm.neimespeis = spacename
+            gnrFrm.clace = clastemp
+            Me.SaveTextToFile(gnrFrm.generaForma, directorio, "Frm" & clastemp.NombreTabla, "Jodeos")
+            Me.SaveTextToFile(gnrDsn.generaDiseno, directorio, "Frm" & clastemp.NombreTabla & ".designer", "Jodeos")
+        End If
+
+        If Me.chkManejador.Checked Then
+            Dim gnrMnj As New generaManejador
+            ''Manejador
+            gnrMnj.neimespeis = spacename
+            gnrMnj.clace = clastemp
+            ''Clase
+            Me.SaveTextToFile(gnrMnj.generaManeja, directorio, "maneja" & clastemp.NombreTabla, "Jodeos")
+        End If
+
+
+        If Me.chkClases.Checked Then
+            Dim genera As New GeneraClase
+            genera.clase = clastemp
+            genera.neimespeis = spacename
+            sclases &= genera.GeneraClase()
+            Me.SaveTextToFile(genera.GeneraClase(), directorio, clastemp.nombre, "Jodeos")
+        End If
         Return sclases
     End Function
 
@@ -155,7 +194,7 @@ Public Class frmgeneraOpciones
         Dim fbdCodigo As New FolderBrowserDialog
         fbdCodigo.RootFolder = Environment.SpecialFolder.Desktop
         ' Select the C:\Windows directory on entry.
-        fbdCodigo.SelectedPath = "c:\windows"
+        fbdCodigo.SelectedPath = "c:\"
         ' Prompt the user with a custom message.
         fbdCodigo.Description = "Select the source directory"
         fbdCodigo.ShowDialog()
@@ -169,6 +208,24 @@ Public Class frmgeneraOpciones
         End While
         Return sarchivo
     End Function
+
+
+
+    Private Sub rdbWapl_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rdbWapl.CheckedChanged
+        Me.ActivaChkCodigo(Me.rdbWapl.Checked)
+    End Sub
+
+
+    Private Sub ActivaChkCodigo(ByVal Activado As Boolean)
+        Me.chkPagina.Visible = Not Activado
+        Me.chkClasesASP.Visible = Not Activado
+        Me.chkMngASP.Visible = Not Activado
+
+        Me.chkClases.Visible = Activado
+        Me.chkInterfaz.Visible = Activado
+        Me.chkManejador.Visible = Activado
+
+    End Sub
 End Class
 
 
