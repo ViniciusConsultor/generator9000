@@ -15,18 +15,18 @@ Public Class generaPagina
     End Function
     Public Function AbrePagina() As String
         Dim codigo As String = String.Empty
-        codigo &= "<%@ Page Language=""VB"" AutoEventWireup=""false"" CodeFile=""Profesores.aspx.vb"" Inherits=""Profesores"" %>"
+        codigo &= "<%@ Page Language=""VB"" AutoEventWireup=""false"" CodeFile=""" & Me.clace.nombre & "View.aspx.vb"" Inherits=""" & Me.clace.nombre & "View"" %>" & vbCrLf
 
-        codigo &= "<%@ Register Assembly=""System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"""
-        codigo &= "Namespace=""System.Web.UI"" TagPrefix=""asp"" %>"
+        'codigo &= "<%@ Register Assembly=""System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"""
+        'codigo &= "Namespace=""System.Web.UI"" TagPrefix=""asp"" %>" & vbCrLf
 
-        codigo &= "<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">"
+        codigo &= "<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">" & vbCrLf
 
-        codigo &= "<html xmlns=""http://www.w3.org/1999/xhtml"" >"
-        codigo &= "<head runat=""server"">"
-        codigo &= "<title>Untitled Page</title>"
-        codigo &= "</head>"
-        codigo &= "<body>"
+        codigo &= "<html xmlns=""http://www.w3.org/1999/xhtml"" >" & vbCrLf
+        codigo &= "<head runat=""server"">" & vbCrLf
+        codigo &= "<title> Control de " & Me.clace.nombre & "</title>" & vbCrLf
+        codigo &= "</head>" & vbCrLf
+        codigo &= "<body>" & vbCrLf
         Return codigo
     End Function
     Public Function generaEncabezado() As String
@@ -52,8 +52,8 @@ Public Class generaPagina
         Dim codigo As String = String.Empty
         codigo &= "<tr>" & vbCrLf
         codigo &= "	<td> " & prop.Nombre & "</td>" & vbCrLf
-        codigo &= "	<td style=""width: '233px'""> " & vbCrLf
-        codigo &= "		<asp:" & prop.nombreControl & "ID=""" & prop.tipoControl & prop.Nombre & """ runat=""server""></asp:" & prop.nombreControl & " > "
+        codigo &= "	<td > " & vbCrLf
+        codigo &= "		<asp:" & prop.nombreControl & " ID=""" & prop.tipoControl & prop.Nombre & """ runat=""server""></asp:" & prop.nombreControl & " > "
         codigo &= "	</td>"
         codigo &= "</tr>"
         Return codigo

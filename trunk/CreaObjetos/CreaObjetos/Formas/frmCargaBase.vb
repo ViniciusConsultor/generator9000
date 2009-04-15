@@ -55,6 +55,7 @@ Public Class frmCargaBase
         Me.txtServer.Name = "txtServer"
         Me.txtServer.Size = New System.Drawing.Size(164, 20)
         Me.txtServer.TabIndex = 30
+        Me.txtServer.Text = "CSC-ARMANDO\CSCARMANDO"
         '
         'btnCreaClase
         '
@@ -95,8 +96,10 @@ Public Class frmCargaBase
         '
         Me.txtContrasena.Location = New System.Drawing.Point(74, 61)
         Me.txtContrasena.Name = "txtContrasena"
+        Me.txtContrasena.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtContrasena.Size = New System.Drawing.Size(100, 20)
         Me.txtContrasena.TabIndex = 32
+        Me.txtContrasena.Text = "Asteroide23"
         '
         'lblUsuario
         '

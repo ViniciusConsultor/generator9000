@@ -109,31 +109,37 @@ Public Class frmgeneraOpciones
     End Function
     Public Function VariosArchivosASP(ByVal spacename As String, ByVal clastemp As Clase) As String
         Dim sclases As String = String.Empty
+
         If Me.chkClasesASP.Checked Then
             Dim gnrDsn As New generaPagina
+            Dim gnrCdPg As New generaCodPagina
             'Diseño
             gnrDsn.neimespeis = spacename
             gnrDsn.clace = clastemp
-            'Forma
-            Me.SaveTextToFile(gnrDsn.generaPagina, directorio, clastemp.NombreTabla & "View.aspx", "Jodeos")
+            'Pagina
+            gnrCdPg.neimespeis = spacename
+            gnrCdPg.clace = clastemp
+            Me.SaveTextToFile(gnrDsn.generaPagina, directorio & "\Views", clastemp.NombreTabla & "View.aspx", "Jodeos")
+            Me.SaveTextToFile(gnrCdPg.generaForma, directorio & "\Views", clastemp.NombreTabla & "View.aspx.vb", "Jodeos")
         End If
 
         If Me.chkManejador.Checked Then
-            Dim gnrMnj As New generaManejador
-            ''Manejador
-            gnrMnj.neimespeis = spacename
-            gnrMnj.clace = clastemp
-            ''Clase
-            Me.SaveTextToFile(gnrMnj.generaManeja, directorio, clastemp.NombreTabla & "Action.aspx.vb", "Jodeos")
+            Dim gnrCdPg As New generaCodPagina
+            'Pagina
+            gnrCdPg.neimespeis = spacename
+            gnrCdPg.clace = clastemp
+            Me.SaveTextToFile(gnrCdPg.generaForma, directorio & "\Views", clastemp.NombreTabla & "View.aspx.vb", "Jodeos")
         End If
 
 
         If Me.chkClases.Checked Then
             Dim genera As New GeneraClaseASP
+
             genera.clase = clastemp
             genera.neimespeis = spacename
             sclases &= genera.GeneraClase()
-            Me.SaveTextToFile(genera.GeneraClase(), directorio, clastemp.nombre, "Jodeos")
+
+            Me.SaveTextToFile(genera.GeneraClase(), directorio & "\Models", clastemp.nombre & ".vb", "Jodeos")
         End If
         Return sclases
     End Function
@@ -148,8 +154,8 @@ Public Class frmgeneraOpciones
             'Forma
             gnrFrm.neimespeis = spacename
             gnrFrm.clace = clastemp
-            Me.SaveTextToFile(gnrFrm.generaForma, directorio, "Frm" & clastemp.NombreTabla, "Jodeos")
-            Me.SaveTextToFile(gnrDsn.generaDiseno, directorio, "Frm" & clastemp.NombreTabla & ".designer", "Jodeos")
+            Me.SaveTextToFile(gnrFrm.generaForma, directorio & "/Views/", "Frm" & clastemp.NombreTabla, "Jodeos")
+            Me.SaveTextToFile(gnrDsn.generaDiseno, directorio & "/Views/", "Frm" & clastemp.NombreTabla & ".designer", "Jodeos")
         End If
 
         If Me.chkManejador.Checked Then
@@ -158,7 +164,7 @@ Public Class frmgeneraOpciones
             gnrMnj.neimespeis = spacename
             gnrMnj.clace = clastemp
             ''Clase
-            Me.SaveTextToFile(gnrMnj.generaManeja, directorio, "maneja" & clastemp.NombreTabla, "Jodeos")
+            Me.SaveTextToFile(gnrMnj.generaManeja, directorio & "/Actions/", "maneja" & clastemp.NombreTabla & ".vb", "Jodeos")
         End If
 
 
@@ -167,7 +173,7 @@ Public Class frmgeneraOpciones
             genera.clase = clastemp
             genera.neimespeis = spacename
             sclases &= genera.GeneraClase()
-            Me.SaveTextToFile(genera.GeneraClase(), directorio, clastemp.nombre, "Jodeos")
+            Me.SaveTextToFile(genera.GeneraClase(), directorio & "/Models/", clastemp.nombre & ".vb", "Jodeos")
         End If
         Return sclases
     End Function
@@ -177,11 +183,14 @@ Public Class frmgeneraOpciones
     ByVal nombreArchivo As String, _
  Optional ByVal ErrInfo As String = "") As Boolean
 
+        If Not My.Computer.FileSystem.DirectoryExists(FullPath) Then
+            My.Computer.FileSystem.CreateDirectory(FullPath)
+        End If
         Dim bAns As Boolean = False
 
         Dim objReader As StreamWriter
         Try
-            objReader = New StreamWriter(FullPath & "\" & nombreArchivo & ".vb")
+            objReader = New StreamWriter(FullPath & "\" & nombreArchivo)
             objReader.Write(strData)
             objReader.Close()
             bAns = True
