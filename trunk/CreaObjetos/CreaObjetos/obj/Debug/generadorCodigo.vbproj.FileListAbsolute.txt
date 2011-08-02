@@ -1,0 +1,17 @@
+C:\Users\xoco\Documents\Visual Studio 2010\Projects\CreaObjetos\CreaObjetos\bin\Debug\Migrador.exe.config
+C:\Users\xoco\Documents\Visual Studio 2010\Projects\CreaObjetos\CreaObjetos\bin\Debug\Migrador.exe
+C:\Users\xoco\Documents\Visual Studio 2010\Projects\CreaObjetos\CreaObjetos\bin\Debug\Migrador.pdb
+C:\Users\xoco\Documents\Visual Studio 2010\Projects\CreaObjetos\CreaObjetos\bin\Debug\Migrador.xml
+C:\Users\xoco\Documents\Visual Studio 2010\Projects\CreaObjetos\CreaObjetos\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\xoco\Documents\Visual Studio 2010\Projects\CreaObjetos\CreaObjetos\obj\Debug\WindowsApplication1.ctlManejaClases.resources
+C:\Users\xoco\Documents\Visual Studio 2010\Projects\CreaObjetos\CreaObjetos\obj\Debug\WindowsApplication1.frmCargaBase.resources
+C:\Users\xoco\Documents\Visual Studio 2010\Projects\CreaObjetos\CreaObjetos\obj\Debug\WindowsApplication1.frmCargaXML.resources
+C:\Users\xoco\Documents\Visual Studio 2010\Projects\CreaObjetos\CreaObjetos\obj\Debug\WindowsApplication1.FrmPrincipal.resources
+C:\Users\xoco\Documents\Visual Studio 2010\Projects\CreaObjetos\CreaObjetos\obj\Debug\WindowsApplication1.frmgeneraOpciones.resources
+C:\Users\xoco\Documents\Visual Studio 2010\Projects\CreaObjetos\CreaObjetos\obj\Debug\WindowsApplication1.ManejaClase.resources
+C:\Users\xoco\Documents\Visual Studio 2010\Projects\CreaObjetos\CreaObjetos\obj\Debug\WindowsApplication1.Resources.resources
+C:\Users\xoco\Documents\Visual Studio 2010\Projects\CreaObjetos\CreaObjetos\obj\Debug\ResGen.read.1.tlog
+C:\Users\xoco\Documents\Visual Studio 2010\Projects\CreaObjetos\CreaObjetos\obj\Debug\ResGen.write.1.tlog
+C:\Users\xoco\Documents\Visual Studio 2010\Projects\CreaObjetos\CreaObjetos\obj\Debug\Migrador.exe
+C:\Users\xoco\Documents\Visual Studio 2010\Projects\CreaObjetos\CreaObjetos\obj\Debug\Migrador.xml
+C:\Users\xoco\Documents\Visual Studio 2010\Projects\CreaObjetos\CreaObjetos\obj\Debug\Migrador.pdb
